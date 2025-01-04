@@ -1,0 +1,57 @@
+make a patch that will suppress the Error
+```need to be patched
+public List<Thing> ThingsMatching(ThingRequest req)
+    {
+      if (req.singleDef != null)
+      {
+        List<Thing> thingList;
+        return !this.listsByDef.TryGetValue(req.singleDef, out thingList) ? ListerThings.EmptyList : thingList;
+      }
+      if (req.group == ThingRequestGroup.Undefined)
+        throw new InvalidOperationException("Invalid ThingRequest " + (object) req);
+      if (this.use != ListerThingsUse.Region || req.group.StoreInRegion())
+        return this.listsByGroup[(int) req.group] ?? ListerThings.EmptyList;
+      Log.ErrorOnce("Tried to get things in group " + (object) req.group + " in a region, but this group is never stored in regions. Most likely a global query should have been used.", 1968735132);
+      return ListerThings.EmptyList;
+    }
+```
+```errpr
+Hideo threw exception in WorkGiver AM_WorkGiver_AddGPU: System.InvalidOperationException: Invalid ThingRequest ThingRequest(group Undefined)
+[Ref 479B0EC2]
+ at Verse.ListerThings.ThingsMatching (Verse.ThingRequest req) [0x000f1] in <69945a8ed6c540cf90b578de735e0605>:0 
+     - PREFIX bs.performance: Boolean PerformanceFish.Listers.Things+ThingsMatching_Patch:Prefix(ListerThings __instance, ThingRequest req, List`1& __result)
+     - PREFIX com.louize.SuppressExceptionMod: Boolean Patch_ListerThings_ThingsMatching:Prefix(ThingRequest req, List`1& __result)
+ at RimWorld.JobGiver_Work.TryIssueJobPackage (Verse.Pawn pawn, Verse.AI.JobIssueParams jobParams) [0x003e4] in <69945a8ed6c540cf90b578de735e0605>:0 
+     - TRANSPILER SmarterConstruction: List`1 SmarterConstruction.Patches.PatchMakeFinishFramesPrioritized:Transpiler(IEnumerable`1 instructions, ILGenerator generator)
+     - PREFIX Orion.Hospitality: Boolean Hospitality.Patches.JobGiver_Work_Patch+TryIssueJobPackage:Prefix(Pawn pawn)
+     - POSTFIX Krkr.Rule56: Void CombatAI.Patches.ThinkNode_Patch+ThinkNode_TryIssueJobPackage_Patch:Postfix(ThinkNode __instance, ThinkResult __result, Pawn pawn)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Verse.Log.Error_Patch5 (string)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:RimWorld.JobGiver_Work.TryIssueJobPackage_Patch2 (RimWorld.JobGiver_Work,Verse.Pawn,Verse.AI.JobIssueParams)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Glue:AbiFixup<Verse.AI.ThinkResult RimWorld.JobGiver_Work:TryIssueJobPackage(Verse.Pawn, Verse.AI.JobIssueParams),Verse.AI.ThinkResult RimWorld.JobGiver_Work.TryIssueJobPackage_Patch2(RimWorld.JobGiver_Work, Verse.Pawn, Verse.AI.JobIssueParams)> (RimWorld.JobGiver_Work,Verse.AI.ThinkResult&,Verse.Pawn,Verse.AI.JobIssueParams)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Verse.AI.ThinkNode_PrioritySorter.TryIssueJobPackage_Patch1 (Verse.AI.ThinkNode_PrioritySorter,Verse.Pawn,Verse.AI.JobIssueParams)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Glue:AbiFixup<Verse.AI.ThinkResult Verse.AI.ThinkNode_PrioritySorter:TryIssueJobPackage(Verse.Pawn, Verse.AI.JobIssueParams),Verse.AI.ThinkResult Verse.AI.ThinkNode_PrioritySorter.TryIssueJobPackage_Patch1(Verse.AI.ThinkNode_PrioritySorter, Verse.Pawn, Verse.AI.JobIssueParams)> (Verse.AI.ThinkNode_PrioritySorter,Verse.AI.ThinkResult&,Verse.Pawn,Verse.AI.JobIssueParams)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Verse.AI.ThinkNode_Priority.TryIssueJobPackage_Patch1 (Verse.AI.ThinkNode_Priority,Verse.Pawn,Verse.AI.JobIssueParams)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Glue:AbiFixup<Verse.AI.ThinkResult Verse.AI.ThinkNode_Priority:TryIssueJobPackage(Verse.Pawn, Verse.AI.JobIssueParams),Verse.AI.ThinkResult Verse.AI.ThinkNode_Priority.TryIssueJobPackage_Patch1(Verse.AI.ThinkNode_Priority, Verse.Pawn, Verse.AI.JobIssueParams)> (Verse.AI.ThinkNode_Priority,Verse.AI.ThinkResult&,Verse.Pawn,Verse.AI.JobIssueParams)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Verse.AI.ThinkNode_Tagger.TryIssueJobPackage_Patch1 (Verse.AI.ThinkNode_Tagger,Verse.Pawn,Verse.AI.JobIssueParams)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Glue:AbiFixup<Verse.AI.ThinkResult Verse.AI.ThinkNode_Tagger:TryIssueJobPackage(Verse.Pawn, Verse.AI.JobIssueParams),Verse.AI.ThinkResult Verse.AI.ThinkNode_Tagger.TryIssueJobPackage_Patch1(Verse.AI.ThinkNode_Tagger, Verse.Pawn, Verse.AI.JobIssueParams)> (Verse.AI.ThinkNode_Tagger,Verse.AI.ThinkResult&,Verse.Pawn,Verse.AI.JobIssueParams)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Verse.AI.ThinkNode_Subtree.TryIssueJobPackage_Patch1 (Verse.AI.ThinkNode_Subtree,Verse.Pawn,Verse.AI.JobIssueParams)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Glue:AbiFixup<Verse.AI.ThinkResult Verse.AI.ThinkNode_Subtree:TryIssueJobPackage(Verse.Pawn, Verse.AI.JobIssueParams),Verse.AI.ThinkResult Verse.AI.ThinkNode_Subtree.TryIssueJobPackage_Patch1(Verse.AI.ThinkNode_Subtree, Verse.Pawn, Verse.AI.JobIssueParams)> (Verse.AI.ThinkNode_Subtree,Verse.AI.ThinkResult&,Verse.Pawn,Verse.AI.JobIssueParams)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Verse.AI.ThinkNode_Priority.TryIssueJobPackage_Patch1 (Verse.AI.ThinkNode_Priority,Verse.Pawn,Verse.AI.JobIssueParams)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Glue:AbiFixup<Verse.AI.ThinkResult Verse.AI.ThinkNode_Priority:TryIssueJobPackage(Verse.Pawn, Verse.AI.JobIssueParams),Verse.AI.ThinkResult Verse.AI.ThinkNode_Priority.TryIssueJobPackage_Patch1(Verse.AI.ThinkNode_Priority, Verse.Pawn, Verse.AI.JobIssueParams)> (Verse.AI.ThinkNode_Priority,Verse.AI.ThinkResult&,Verse.Pawn,Verse.AI.JobIssueParams)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Verse.AI.ThinkNode_Conditional.TryIssueJobPackage_Patch1 (Verse.AI.ThinkNode_Conditional,Verse.Pawn,Verse.AI.JobIssueParams)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Glue:AbiFixup<Verse.AI.ThinkResult Verse.AI.ThinkNode_Conditional:TryIssueJobPackage(Verse.Pawn, Verse.AI.JobIssueParams),Verse.AI.ThinkResult Verse.AI.ThinkNode_Conditional.TryIssueJobPackage_Patch1(Verse.AI.ThinkNode_Conditional, Verse.Pawn, Verse.AI.JobIssueParams)> (Verse.AI.ThinkNode_Conditional,Verse.AI.ThinkResult&,Verse.Pawn,Verse.AI.JobIssueParams)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Verse.AI.ThinkNode_Priority.TryIssueJobPackage_Patch1 (Verse.AI.ThinkNode_Priority,Verse.Pawn,Verse.AI.JobIssueParams)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Glue:AbiFixup<Verse.AI.ThinkResult Verse.AI.ThinkNode_Priority:TryIssueJobPackage(Verse.Pawn, Verse.AI.JobIssueParams),Verse.AI.ThinkResult Verse.AI.ThinkNode_Priority.TryIssueJobPackage_Patch1(Verse.AI.ThinkNode_Priority, Verse.Pawn, Verse.AI.JobIssueParams)> (Verse.AI.ThinkNode_Priority,Verse.AI.ThinkResult&,Verse.Pawn,Verse.AI.JobIssueParams)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Verse.AI.Pawn_JobTracker.DetermineNextJob_Patch1 (Verse.AI.Pawn_JobTracker,Verse.ThinkTreeDef&,bool)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Glue:AbiFixup<Verse.AI.ThinkResult Verse.AI.Pawn_JobTracker:DetermineNextJob(Verse.ThinkTreeDef&, System.Boolean),Verse.AI.ThinkResult Verse.AI.Pawn_JobTracker.DetermineNextJob_Patch1(Verse.AI.Pawn_JobTracker, Verse.ThinkTreeDef&, System.Boolean)> (Verse.AI.Pawn_JobTracker,Verse.AI.ThinkResult&,Verse.ThinkTreeDef&,bool)
+Verse.AI.Pawn_JobTracker:TryFindAndStartJob ()
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Verse.AI.Pawn_JobTracker.EndCurrentJob_Patch7 (Verse.AI.Pawn_JobTracker,Verse.AI.JobCondition,bool,bool)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Verse.AI.Pawn_JobTracker.JobTrackerTick_Patch0 (Verse.AI.Pawn_JobTracker)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Verse.Pawn.Tick_Patch3 (Verse.Pawn)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Verse.TickList.Tick_Patch2 (Verse.TickList)
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Verse.TickManager.DoSingleTick_Patch8 (Verse.TickManager)
+Verse.TickManager:TickManagerUpdate ()
+(wrapper dynamic-method) MonoMod.Utils.DynamicMethodDefinition:Verse.Game.UpdatePlay_Patch5 (Verse.Game)
+Verse.Root_Play:Update ()
+```

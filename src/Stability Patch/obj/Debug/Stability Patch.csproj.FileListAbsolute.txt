@@ -1,0 +1,36 @@
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\Stability Patch.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\Stability Patch.pdb
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\0Harmony.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\Assembly-CSharp.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\UnityEngine.IMGUIModule.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\UnityEngine.CoreModule.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\UnityEngine.TextRenderingModule.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\NAudio.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\NVorbis.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\UnityEngine.AudioModule.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\com.rlabrecque.steamworks.net.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\Unity.Burst.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\UnityEngine.AssetBundleModule.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\Unity.Mathematics.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\UnityEngine.PhysicsModule.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\Unity.TextMeshPro.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\ISharpZipLib.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\UnityEngine.InputLegacyModule.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\UnityEngine.PerformanceReportingModule.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\UnityEngine.ImageConversionModule.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\UnityEngine.ScreenCaptureModule.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\UnityEngine.UI.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\UnityEngine.SharedInternalsModule.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\Unity.Burst.Unsafe.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\UnityEngine.TextCoreModule.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\UnityEngine.UIModule.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\UnityEngine.Physics2DModule.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\UnityEngine.AnimationModule.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\0Harmony.pdb
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\0Harmony.xml
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\obj\Debug\Stability Patch.csproj.AssemblyReference.cache
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\obj\Debug\Stability Patch.csproj.CoreCompileInputs.cache
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\obj\Debug\Stabilit.16C474AB.Up2Date
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\obj\Debug\Stability Patch.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\obj\Debug\Stability Patch.pdb

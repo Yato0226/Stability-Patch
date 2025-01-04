@@ -1,0 +1,228 @@
+// Decompiled with JetBrains decompiler
+// Type: Verse.ListerThings
+// Assembly: Assembly-CSharp, Version=1.5.9102.32373, Culture=neutral, PublicKeyToken=null
+// MVID: 69945A8E-D6C5-40CF-90B5-78DE735E0605
+// Assembly location: G:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll
+
+using RimWorld;
+using System;
+using System.Collections.Generic;
+
+#nullable disable
+namespace Verse
+{
+  public sealed class ListerThings
+  {
+    private Dictionary<ThingDef, List<Thing>> listsByDef = new Dictionary<ThingDef, List<Thing>>((IEqualityComparer<ThingDef>) ThingDefComparer.Instance);
+    private List<Thing>[] listsByGroup;
+    private int[] stateHashByGroup;
+    public ListerThingsUse use;
+    public ThingListChangedCallbacks thingListChangedCallbacks;
+    private static readonly List<Thing> EmptyList = new List<Thing>();
+    private static List<Thing> tmpThingsMatchingFilter = new List<Thing>(1024);
+
+    public List<Thing> AllThings => this.listsByGroup[2];
+
+    public ListerThings(
+      ListerThingsUse use,
+      ThingListChangedCallbacks thingListChangedCallbacks = null)
+    {
+      this.use = use;
+      this.thingListChangedCallbacks = thingListChangedCallbacks;
+      this.listsByGroup = new List<Thing>[ThingListGroupHelper.AllGroups.Length];
+      this.stateHashByGroup = new int[ThingListGroupHelper.AllGroups.Length];
+      this.listsByGroup[2] = new List<Thing>();
+    }
+
+    public List<Thing> ThingsInGroup(ThingRequestGroup group)
+    {
+      return this.ThingsMatching(ThingRequest.ForGroup(group));
+    }
+
+    public int StateHashOfGroup(ThingRequestGroup group)
+    {
+      if (this.use != ListerThingsUse.Region || group.StoreInRegion())
+        return Gen.HashCombineInt(85693994, this.stateHashByGroup[(int) group]);
+      Log.ErrorOnce("Tried to get state hash of group " + (object) group + " in a region, but this group is never stored in regions. Most likely a global query should have been used.", 1968738832);
+      return -1;
+    }
+
+    public List<Thing> ThingsOfDef(ThingDef def) => this.ThingsMatching(ThingRequest.ForDef(def));
+
+    public bool AnyThingWithDef(ThingDef def)
+    {
+      return this.listsByDef.ContainsKey(def) && this.listsByDef[def].Count > 0;
+    }
+
+    public List<Thing> ThingsMatching(ThingRequest req)
+    {
+      if (req.singleDef != null)
+      {
+        List<Thing> thingList;
+        return !this.listsByDef.TryGetValue(req.singleDef, out thingList) ? ListerThings.EmptyList : thingList;
+      }
+      if (req.group == ThingRequestGroup.Undefined)
+        throw new InvalidOperationException("Invalid ThingRequest " + (object) req);
+      if (this.use != ListerThingsUse.Region || req.group.StoreInRegion())
+        return this.listsByGroup[(int) req.group] ?? ListerThings.EmptyList;
+      Log.ErrorOnce("Tried to get things in group " + (object) req.group + " in a region, but this group is never stored in regions. Most likely a global query should have been used.", 1968735132);
+      return ListerThings.EmptyList;
+    }
+
+    public List<Thing> ThingsMatchingFilter(ThingFilter filter)
+    {
+      ListerThings.tmpThingsMatchingFilter.Clear();
+      foreach (ThingDef allowedThingDef in filter.AllowedThingDefs)
+        ListerThings.tmpThingsMatchingFilter.AddRange((IEnumerable<Thing>) this.ThingsOfDef(allowedThingDef));
+      return ListerThings.tmpThingsMatchingFilter;
+    }
+
+    public void GetThingsOfType<T>(List<T> list) where T : Thing
+    {
+      if (typeof (T) == typeof (Thing))
+      {
+        Log.Error("Do not call this method with type 'Thing' directly, as it will return all things currently registered.");
+      }
+      else
+      {
+        List<Thing> allThings = this.AllThings;
+        for (int index = 0; index < this.AllThings.Count; ++index)
+        {
+          if (allThings[index] is T obj)
+            list.Add(obj);
+        }
+      }
+    }
+
+    public IEnumerable<T> GetThingsOfType<T>() where T : Thing
+    {
+      if (typeof (T) == typeof (Thing))
+      {
+        Log.Error("Do not call this method with type 'Thing' directly, as it will return all things currently registered.");
+      }
+      else
+      {
+        List<Thing> things = this.AllThings;
+        for (int i = 0; i < this.AllThings.Count; ++i)
+        {
+          if (things[i] is T obj)
+            yield return obj;
+        }
+      }
+    }
+
+    public IEnumerable<Thing> GetAllThings(Predicate<Thing> validator = null, bool lookInHaulSources = false)
+    {
+      foreach (Thing thing in this.AllThings)
+      {
+        if (validator == null || validator(thing))
+          yield return thing;
+        if (lookInHaulSources && thing is IHaulSource haulSource)
+        {
+          foreach (Thing directlyHeldThing in (IEnumerable<Thing>) haulSource.GetDirectlyHeldThings())
+          {
+            if (validator == null || validator(directlyHeldThing))
+              yield return directlyHeldThing;
+          }
+        }
+      }
+    }
+
+    public void GetAllThings(
+      in List<Thing> list,
+      Predicate<Thing> validator = null,
+      bool lookInHaulSources = false)
+    {
+      foreach (Thing allThing in this.AllThings)
+      {
+        if (validator == null || validator(allThing))
+          list.Add(allThing);
+        if (lookInHaulSources && allThing is IHaulSource haulSource)
+        {
+          foreach (Thing directlyHeldThing in (IEnumerable<Thing>) haulSource.GetDirectlyHeldThings())
+          {
+            if (validator == null || validator(directlyHeldThing))
+              list.Add(directlyHeldThing);
+          }
+        }
+      }
+    }
+
+    public bool Contains(Thing t) => this.AllThings.Contains(t);
+
+    public void Add(Thing t)
+    {
+      if (!ListerThings.EverListable(t.def, this.use))
+        return;
+      List<Thing> thingList1;
+      if (!this.listsByDef.TryGetValue(t.def, out thingList1))
+      {
+        thingList1 = new List<Thing>();
+        this.listsByDef.Add(t.def, thingList1);
+      }
+      thingList1.Add(t);
+      foreach (ThingRequestGroup allGroup in ThingListGroupHelper.AllGroups)
+      {
+        if ((this.use != ListerThingsUse.Region || allGroup.StoreInRegion()) && allGroup.Includes(t.def))
+        {
+          List<Thing> thingList2 = this.listsByGroup[(int) allGroup];
+          if (thingList2 == null)
+          {
+            thingList2 = new List<Thing>();
+            this.listsByGroup[(int) allGroup] = thingList2;
+            this.stateHashByGroup[(int) allGroup] = 0;
+          }
+          thingList2.Add(t);
+          ++this.stateHashByGroup[(int) allGroup];
+        }
+      }
+      ThingListChangedCallbacks changedCallbacks = this.thingListChangedCallbacks;
+      if (changedCallbacks == null)
+        return;
+      Action<Thing> onThingAdded = changedCallbacks.onThingAdded;
+      if (onThingAdded == null)
+        return;
+      onThingAdded(t);
+    }
+
+    public void Remove(Thing t)
+    {
+      if (!ListerThings.EverListable(t.def, this.use))
+        return;
+      this.listsByDef[t.def].Remove(t);
+      ThingRequestGroup[] allGroups = ThingListGroupHelper.AllGroups;
+      for (int index = 0; index < allGroups.Length; ++index)
+      {
+        ThingRequestGroup group = allGroups[index];
+        if ((this.use != ListerThingsUse.Region || group.StoreInRegion()) && group.Includes(t.def))
+        {
+          this.listsByGroup[index].Remove(t);
+          ++this.stateHashByGroup[(int) group];
+        }
+      }
+      ThingListChangedCallbacks changedCallbacks = this.thingListChangedCallbacks;
+      if (changedCallbacks == null)
+        return;
+      Action<Thing> onThingRemoved = changedCallbacks.onThingRemoved;
+      if (onThingRemoved == null)
+        return;
+      onThingRemoved(t);
+    }
+
+    public static bool EverListable(ThingDef def, ListerThingsUse use)
+    {
+      return (def.category != ThingCategory.Mote || def.drawGUIOverlay && use != ListerThingsUse.Region) && (def.category != ThingCategory.Projectile || use != ListerThingsUse.Region);
+    }
+
+    public void Clear()
+    {
+      this.listsByDef.Clear();
+      for (int index = 0; index < this.listsByGroup.Length; ++index)
+      {
+        if (this.listsByGroup[index] != null)
+          this.listsByGroup[index].Clear();
+        this.stateHashByGroup[index] = 0;
+      }
+    }
+  }
+}
