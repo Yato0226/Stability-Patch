@@ -34,3 +34,5 @@ C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\obj\Debug\Stabil
 C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\obj\Debug\Stabilit.16C474AB.Up2Date
 C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\obj\Debug\Stability Patch.dll
 C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\obj\Debug\Stability Patch.pdb
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\JobInBar.dll
+C:\Users\louiz\source\repos\Stability Patch\src\Stability Patch\bin\Debug\0DarkColourPicker_Forked.dll

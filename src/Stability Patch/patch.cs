@@ -1,49 +1,39 @@
 ﻿using HarmonyLib;
 using Verse;
+using System;
 using System.Collections.Generic;
 
 namespace StabilityPatch
 {
-    public class StabilityPatch : Mod
+    [StaticConstructorOnStartup]
+    public static class StabilityPatch
     {
-        public StabilityPatch(ModContentPack content) : base(content)
+        static StabilityPatch()
         {
-            var harmony = new Harmony("com.yourname.StabilityPatch");
-            harmony.PatchAll();
+            if (StabilityPatchMod.settings.enableStabilityPatch)
+            {
+                var harmony = new Harmony("com.louize.StabilityPatch");
+                harmony.PatchAll();
+            }
         }
     }
 
     [HarmonyPatch(typeof(ListerThings), "ThingsMatching")]
     public static class Patch_ListerThings_ThingsMatching
     {
-        public static bool Prefix(ThingRequest req, ref List<Thing> __result)
+        public static void Postfix(ThingRequest req, ref List<Thing> __result)
         {
-            // Check if the ThingRequest is valid before proceeding
-            if (req.singleDef != null)
+            try
             {
-                // Use the ThingsMatching method to get the list of things
-                // Access ListerThings through the current map
-                if (Find.CurrentMap != null)
+                if (__result == null)
                 {
-                    __result = Find.CurrentMap.listerThings.ThingsMatching(req);
-                    return false; // Prevent the original method from executing
-                }
-                else
-                {
-                    __result = new List<Thing>(); // Return an empty list if no current map
-                    return false; // Prevent the original method from executing
+                    __result = new List<Thing>();
                 }
             }
-
-            // Suppress the exception for undefined group
-            if (req.group == ThingRequestGroup.Undefined)
+            catch (InvalidOperationException)
             {
-                __result = new List<Thing>(); // Return an empty list
-                return false; // Prevent the original method from executing
+                __result = new List<Thing>();
             }
-
-            // Allow the original method to execute for valid requests
-            return true; // Proceed to the original method
         }
     }
 }
