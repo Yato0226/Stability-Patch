@@ -2,7 +2,7 @@
 <ModMetaData>
     <name>Stability Patch</name>
     <author>louize</author>
-    <packageId>louize.Stability Patch</packageId>
+    <packageId>louize.Stability.Patch</packageId>
     <description>
       - Enhances game stability by suppressing specific exceptions. 
       - Targets InvalidOperationExceptions in the ThingsMatching method of the ListerThings class. 
