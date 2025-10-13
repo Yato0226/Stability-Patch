@@ -1,39 +1,35 @@
-﻿using HarmonyLib;
-using Verse;
 using System;
-using System.Collections.Generic;
+using HarmonyLib;
+using RimWorld;
+using Verse;
 
-namespace StabilityPatch
+namespace SafeFacilityDrawPatchMod
 {
     [StaticConstructorOnStartup]
-    public static class StabilityPatch
+    public static class SafeFacilityDrawPatchInitializer
     {
-        static StabilityPatch()
+        static SafeFacilityDrawPatchInitializer()
         {
-            if (StabilityPatchMod.settings.enableStabilityPatch)
-            {
-                var harmony = new Harmony("com.louize.StabilityPatch");
-                harmony.PatchAll();
-            }
+            var harmony = new Harmony("com.louize.stabilitypatch");
+            harmony.PatchAll();
         }
     }
 
-    [HarmonyPatch(typeof(ListerThings), "ThingsMatching")]
-    public static class Patch_ListerThings_ThingsMatching
+    [HarmonyPatch(typeof(CompFacility), nameof(CompFacility.DrawPlaceMouseAttachmentsToPotentialThingsToLinkTo))]
+    public static class SafeFacilityDrawPatch
     {
-        public static void Postfix(ThingRequest req, ref List<Thing> __result)
+        static bool Prefix(ThingDef myDef, Map map)
         {
-            try
+            if (myDef == null || map == null)
             {
-                if (__result == null)
-                {
-                    __result = new List<Thing>();
-                }
+                return false;
             }
-            catch (InvalidOperationException)
+            var compProperties = myDef.GetCompProperties<CompProperties_Facility>();
+            if (compProperties == null || compProperties.linkableBuildings == null)
             {
-                __result = new List<Thing>();
+                return false;
             }
+            return true;
         }
     }
 }
