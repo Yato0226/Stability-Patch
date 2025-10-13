@@ -129,7 +129,6 @@ D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stability Pat
 D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stability Patch\bin\Debug\Stability Patch.pdb
 D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stability Patch\bin\Debug\0Harmony.dll
 D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stability Patch\bin\Debug\Assembly-CSharp.dll
-D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stability Patch\bin\Debug\LordKuper.WorkManager.dll
 D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stability Patch\bin\Debug\UnityEngine.CoreModule.dll
 D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stability Patch\bin\Debug\UnityEngine.dll
 D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stability Patch\bin\Debug\UnityEngine.IMGUIModule.dll

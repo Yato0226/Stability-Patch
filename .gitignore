@@ -1,1 +1,12 @@
-/.vscode
+# Visual Studio
+**/.vs/
+*.suo
+*.user
+*.sln.docstates
+
+# Build artifacts
+**/bin/
+**/obj/
+
+# Rider
+.idea/

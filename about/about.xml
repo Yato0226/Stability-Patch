@@ -24,6 +24,7 @@
     </modDependencies>
     <loadAfter>
         <li>brrainz.harmony</li>
-        <li>rim.job.world</li>
+        <li>lordkuper.common</li>
+        <li>lordkuper.workmanager</li>
     </loadAfter>
 </ModMetaData>
