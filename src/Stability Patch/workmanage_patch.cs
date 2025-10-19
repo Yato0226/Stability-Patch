@@ -15,6 +15,13 @@ namespace Stability_Patch
         [HarmonyPrefix]
         public static bool Prefix(WorkPriorityUpdater __instance)
         {
+            // Check if LordKuper.WorkManager mod is active
+            if (ModLister.GetModWithIdentifier("lordkuper.workmanager")?.Active != true)
+            {
+                Log.Message("Stability Patch: LordKuper.WorkManager mod is not active, skipping WorkPriorityUpdater_AssignDedicatedWorkers_Patch.");
+                return true; // Skip this patch if WorkManager is not active
+            }
+
             HashSet<object> capablePawns = AccessTools.Field(typeof(WorkPriorityUpdater), "_capablePawns").GetValue(__instance) as HashSet<object>;
             if (capablePawns == null || capablePawns.Count == 0)
             {

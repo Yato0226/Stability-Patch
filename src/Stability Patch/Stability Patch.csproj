@@ -31,8 +31,11 @@ xcopy "D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stabil
 xcopy "D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stability Patch\bin\Release\Stability Patch.dll" "D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\Assemblies\" /Y</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AM_WorkGiver_AddGPU_Patch.cs" />
+    <Compile Include="JobDriverIngestPatch.cs" />
     <Compile Include="patch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkGiver_Fish_Patch.cs" />
     <Compile Include="workmanage_patch.cs" />
   </ItemGroup>
   <ItemGroup>
