@@ -206,3 +206,5 @@ D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stability Pat
 D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stability Patch\bin\Debug\0Harmony.pdb
 D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stability Patch\bin\Debug\0Harmony.xml
 D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stability Patch\obj\Debug\Stabilit.16C474AB.Up2Date
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stability Patch\bin\Debug\rimworld-mod-real-fow.dll
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stability Patch\bin\Debug\VersionFromManifest.dll

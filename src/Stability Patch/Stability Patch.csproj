@@ -35,6 +35,7 @@ xcopy "D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stabil
     <Compile Include="JobDriverIngestPatch.cs" />
     <Compile Include="patch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RealFogOfWar_Patch.cs" />
     <Compile Include="WorkGiver_Fish_Patch.cs" />
     <Compile Include="workmanage_patch.cs" />
   </ItemGroup>
@@ -48,6 +49,9 @@ xcopy "D:\SteamLibrary\steamapps\common\RimWorld\Mods\Stability-Patch\src\Stabil
     </Reference>
     <Reference Include="LordKuper.WorkManager">
       <HintPath>bin\Debug\LordKuper.WorkManager.dll</HintPath>
+    </Reference>
+    <Reference Include="rimworld-mod-real-fow">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\3391128917\1.6\Assemblies\rimworld-mod-real-fow.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>

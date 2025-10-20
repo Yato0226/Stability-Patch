@@ -5,12 +5,12 @@ using Verse.AI;
 
 namespace Stability_Patch
 {
-    [HarmonyPatch(typeof(JobDriver_Ingest), "FinalizeIngest")]
+    [HarmonyPatch(typeof(Toils_Ingest), "FinalizeIngest")]
     public static class JobDriverIngestPatch
     {
-        static bool Prefix(JobDriver_Ingest __instance)
+        public static bool Prefix(Pawn ingester, TargetIndex ingestibleInd)
         {
-            if (__instance.pawn == null || __instance.job == null || __instance.job.targetA.Thing == null)
+            if (ingester?.jobs?.curJob == null || !ingester.jobs.curJob.GetTarget(ingestibleInd).HasThing)
             {
                 return false; // Skip original method if essential components are null
             }

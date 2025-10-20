@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Stability-Patch\\src\\Stability Patch\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|d:\\steamlibrary\\steamapps\\common\\rimworld\\mods\\stability-patch\\src\\stability patch\\jobdriveringestpatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|d:\\steamlibrary\\steamapps\\common\\rimworld\\mods\\stability-patch\\src\\stability patch\\realfogofwar_patch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|solutionrelative:realfogofwar_patch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Stability-Patch\\src\\Stability Patch\\jobdriveringestpatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|solutionrelative:jobdriveringestpatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|d:\\steamlibrary\\steamapps\\common\\rimworld\\mods\\stability-patch\\src\\stability patch\\workgiver_fish_patch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|solutionrelative:workgiver_fish_patch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|d:\\steamlibrary\\steamapps\\common\\rimworld\\mods\\stability-patch\\src\\stability patch\\am_workgiver_addgpu_patch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|solutionrelative:am_workgiver_addgpu_patch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Stability-Patch\\src\\Stability Patch\\workmanage_patch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|solutionrelative:workmanage_patch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Stability-Patch\\src\\Stability Patch\\workgiver_fish_patch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|solutionrelative:workgiver_fish_patch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Stability-Patch\\src\\Stability Patch\\patch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|solutionrelative:patch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Stability-Patch\\src\\Stability Patch\\am_workgiver_addgpu_patch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67238811-A453-4C75-BA3D-B67B2007F459}|Stability Patch.csproj|solutionrelative:am_workgiver_addgpu_patch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,19 +47,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "RealFogOfWar_Patch.cs",
+              "DocumentMoniker": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Stability-Patch\\src\\Stability Patch\\RealFogOfWar_Patch.cs",
+              "RelativeDocumentMoniker": "RealFogOfWar_Patch.cs",
+              "ToolTip": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Stability-Patch\\src\\Stability Patch\\RealFogOfWar_Patch.cs",
+              "RelativeToolTip": "RealFogOfWar_Patch.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAwwEAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T13:04:20.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "JobDriverIngestPatch.cs",
               "DocumentMoniker": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Stability-Patch\\src\\Stability Patch\\JobDriverIngestPatch.cs",
               "RelativeDocumentMoniker": "JobDriverIngestPatch.cs",
               "ToolTip": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Stability-Patch\\src\\Stability Patch\\JobDriverIngestPatch.cs",
               "RelativeToolTip": "JobDriverIngestPatch.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAgAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-19T10:07:42.596Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "WorkGiver_Fish_Patch.cs",
               "DocumentMoniker": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Stability-Patch\\src\\Stability Patch\\WorkGiver_Fish_Patch.cs",
               "RelativeDocumentMoniker": "WorkGiver_Fish_Patch.cs",
@@ -63,12 +80,11 @@
               "RelativeToolTip": "WorkGiver_Fish_Patch.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T10:07:30.796Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-19T10:07:30.796Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "AM_WorkGiver_AddGPU_Patch.cs",
               "DocumentMoniker": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Stability-Patch\\src\\Stability Patch\\AM_WorkGiver_AddGPU_Patch.cs",
               "RelativeDocumentMoniker": "AM_WorkGiver_AddGPU_Patch.cs",
@@ -76,18 +92,17 @@
               "RelativeToolTip": "AM_WorkGiver_AddGPU_Patch.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T07:29:00.362Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-19T07:29:00.362Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "workmanage_patch.cs",
               "DocumentMoniker": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Stability-Patch\\src\\Stability Patch\\workmanage_patch.cs",
               "RelativeDocumentMoniker": "workmanage_patch.cs",
               "ToolTip": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Stability-Patch\\src\\Stability Patch\\workmanage_patch.cs",
               "RelativeToolTip": "workmanage_patch.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABEAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAN8AAAAAAAAAAAAQwBEAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-13T08:27:11.943Z"
             },
@@ -99,7 +114,7 @@
               "RelativeDocumentMoniker": "patch.cs",
               "ToolTip": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Stability-Patch\\src\\Stability Patch\\patch.cs",
               "RelativeToolTip": "patch.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAzwBQAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-05T14:33:36.416Z"
             }
